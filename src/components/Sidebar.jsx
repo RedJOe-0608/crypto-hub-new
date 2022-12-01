@@ -6,12 +6,15 @@ import React from 'react'
 
 const Sidebar = () => {
   return (
+    <Box width={225}>
     <Drawer
         variant='permanent'
         anchor='left'
+        elevation={0}
+        disablePadding
     >
         {/* You can pass in css props directly in the Box component */}
-        <Box width={240} className='bg-[#001529] min-h-full'>
+        <Box bgcolor="#001529" className='min-h-full'>
             <Container sx={{display: "flex", alignItems: "center", marginTop: "1rem"}}>
                   <img src='/img/cryptocurrency.png' className='w-[3rem] h-[3rem] mr-2' alt="" /> 
             <Typography variant='h5' sx={{color: "#1890ff"}}>Crypto Hub</Typography>
@@ -42,6 +45,7 @@ const Sidebar = () => {
             </List>
         </Box>
     </Drawer>
+    </Box>
   )
 }
 
