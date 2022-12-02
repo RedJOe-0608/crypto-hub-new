@@ -12,7 +12,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (builder) => ({
         getCryptos: builder.query({
-            query: () => createRequest('/coins')
+            query: () => createRequest(`/coins?limit=${100}`)
         }),
         getCryptoHistory: builder.query({
             query: ({uuid, timePeriod}) => createRequest(`/coin/${uuid}/history?timePeriod=${timePeriod}`)
