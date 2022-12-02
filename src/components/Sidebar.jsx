@@ -3,15 +3,21 @@ import HomeIcon from '@mui/icons-material/Home';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+    const drawerWidth= 260
   return (
-    <Box width={225}>
     <Drawer
         variant='permanent'
         anchor='left'
         elevation={0}
         disablePadding
+        sx={{
+            width: drawerWidth,
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+        
     >
         {/* You can pass in css props directly in the Box component */}
         <Box bgcolor="#001529" className='min-h-full'>
@@ -23,29 +29,31 @@ const Sidebar = () => {
             <List sx={{marginTop: "3rem", }} className='text-gray-300 '>
                 <ListItem disablePadding sx={{marginBottom: "1.5rem"}}>
                     <ListItemButton>
-
-                    <ListItemIcon><HomeIcon className='text-gray-300'/></ListItemIcon>
-                    <ListItemText primary="Home"/>
+                        <Link className='flex' to={'/'}>
+                            <ListItemIcon><HomeIcon className='text-gray-300'/></ListItemIcon>
+                            <ListItemText primary="Home"/>
+                        </Link>
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{marginBottom: "1.5rem"}}>
                      <ListItemButton>
-
-                    <ListItemIcon><ShowChartIcon className='text-gray-300'/></ListItemIcon>
-                    <ListItemText primary="CryptoCurrencies" />
-                     </ListItemButton>
+                        <Link className='flex' to={'/cryptocurrencies'}>
+                            <ListItemIcon><ShowChartIcon className='text-gray-300'/></ListItemIcon>
+                            <ListItemText primary="CryptoCurrencies" />
+                        </Link>
+                    </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{marginBottom: "1.5rem"}}>
                      <ListItemButton>
-
-                    <ListItemIcon><NewspaperIcon className='text-gray-300'/></ListItemIcon>
-                    <ListItemText primary="News"/>
-                     </ListItemButton>
+                        <Link className='flex' to={'/news'}>  
+                            <ListItemIcon><NewspaperIcon className='text-gray-300'/></ListItemIcon>
+                            <ListItemText primary="News"/>
+                        </Link>
+                    </ListItemButton>
                 </ListItem>
             </List>
         </Box>
     </Drawer>
-    </Box>
   )
 }
 

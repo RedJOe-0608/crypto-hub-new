@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import 'react-alice-carousel/lib/alice-carousel.css';
 import { cryptoApi } from './features/cryptoApi';
 const store = configureStore({
   reducer: {
