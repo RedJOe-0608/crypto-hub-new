@@ -6,7 +6,7 @@ import Carousel from './Carousel'
 import { useGetCryptoNewsQuery } from '../features/cryptoNewsApi'
 import moment from 'moment/moment'
 const Center = ({cryptos}) => {
-  const {data: cryptoNews ,isFetching} = useGetCryptoNewsQuery({search: 'crypto'})
+  const {data: cryptoNews ,isFetching} = useGetCryptoNewsQuery({search: 'crypto', count: 6})
   console.log(cryptoNews);
   return (
     <Box display="flex" flexDirection="column" marginTop={1} maxWidth={"calc(100vw - 280px)"} padding={2}>
@@ -43,8 +43,13 @@ const Center = ({cryptos}) => {
       <Carousel  cryptos={cryptos?.coins}/>
 
     </Box>
-        <Typography variant='h5' sx={{marginTop: "3rem"}}>Latest Crypto News</Typography>
+    <div className='flex justify-between mt-[3rem]'>
+        <Typography variant='h5'>Latest Crypto News</Typography>
+      <Button ><Link to={'/news'} className='text-lg'>Show More</Link></Button>
+    </div>
+      
       <Grid container spacing={3}>
+         
         {cryptoNews?.value?.map((news) => (
            <Grid item xs={8} md={6} lg={4}>
               <a href={news?.url} className='hover:drop-shadow-[0_0px_7px_rgba(0,0,0,0.4)] hover:transition ease-in duration-500 transition cursor-pointer p-4'>
